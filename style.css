@@ -220,13 +220,20 @@ h2 {
 }
 
 .experience-image {
-  flex: 0 0 180px;
+  flex: 0 0 140px;
 }
 
 .experience-image img {
-  width: 100%;
+  width: 140px;
+  height: 140px;
+
+  object-fit: contain;
+
+  border: 1px solid var(--light-grey);
   border-radius: 10px;
-  display: block;
+
+  padding: 0.75rem;
+  background-color: white;
 }
 
 .experience-content {

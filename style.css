@@ -186,3 +186,8 @@ h2 {
   font-weight: 700;
   color: var(--navy-dark);
 }
+
+.pub-gap {
+  width: 1in;
+  min-width: 1in;
+}

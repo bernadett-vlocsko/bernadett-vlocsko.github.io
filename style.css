@@ -188,6 +188,6 @@ h2 {
 }
 
 .pub-gap {
-  width: 1in;
-  min-width: 1in;
+  width: 0.2in;
+  min-width: 0.2in;
 }

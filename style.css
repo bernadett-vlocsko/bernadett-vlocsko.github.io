@@ -125,3 +125,9 @@ h2 {
 .publication:last-child {
     border-bottom: none;
 }
+
+
+section {
+    max-width: 900px;
+    padding-left: 3rem;
+}

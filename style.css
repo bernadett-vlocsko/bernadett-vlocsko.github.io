@@ -136,3 +136,7 @@ h2 {
 .publication:last-child {
   border-bottom: none;
 }
+
+.pub-year {
+  vertical-align: top;
+}

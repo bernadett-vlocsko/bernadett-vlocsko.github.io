@@ -137,6 +137,52 @@ h2 {
   border-bottom: none;
 }
 
-.pub-year {
+.publications-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.publications-table tr {
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.publications-table tr:last-child {
+  border-bottom: none;
+}
+
+.publications-table td {
+  padding: 1rem 0.75rem;
   vertical-align: top;
+}
+
+.pub-year {
+  width: 80px;
+  font-weight: 700;
+  color: var(--navy-dark);
+  white-space: nowrap;
+}
+
+.publication {
+  line-height: 1.6;
+}
+
+.pub-doi {
+  width: 90px;
+  white-space: nowrap;
+}
+
+.pub-doi a {
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.pub-doi a:hover {
+  color: var(--navy-light);
+  text-decoration: underline;
+}
+
+.author-highlight {
+  font-weight: 700;
+  color: var(--navy-dark);
 }

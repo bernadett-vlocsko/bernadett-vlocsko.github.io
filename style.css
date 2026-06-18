@@ -160,6 +160,8 @@ h2 {
   font-weight: 700;
   color: var(--navy-dark);
   white-space: nowrap;
+  vertical-align: top;
+  padding-top: 1rem;
 }
 
 .publication {
@@ -212,3 +214,4 @@ h2 {
   margin: 0 0.75rem;
   color: #999;
 }
+

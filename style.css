@@ -114,3 +114,14 @@ h2 {
     font-weight: bold;
     color: #003366;   /* matches your heading color */
 }
+
+.publication {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #d8d8d8;
+    line-height: 1.6;
+}
+
+.publication:last-child {
+    border-bottom: none;
+}

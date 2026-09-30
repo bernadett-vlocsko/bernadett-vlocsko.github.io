@@ -285,3 +285,14 @@ h2 {
   margin-bottom: 40px;
   scroll-margin-top: 90px;
 }
+
+#copyright {
+  text-align: center;
+  margin: 4rem 0 2rem;
+  padding: 1.5rem 1rem;
+}
+
+#copyright p {
+  margin: 0;
+}
+

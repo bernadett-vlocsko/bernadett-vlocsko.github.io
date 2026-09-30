@@ -67,6 +67,16 @@ section {
 
 /* Typography */
 
+/* Consistent title on every subpage */
+.page-title {
+  color: var(--navy);
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--light-grey);
+  padding-bottom: 0.5rem;
+}
+
 h1 {
   color: var(--navy-dark);
   font-size: 3rem;
@@ -196,7 +206,7 @@ h2 {
   color: #999;
 }
 
-/* About section with hexagonal photo */
+/* About section with photo */
 
 .about-content {
   display: flex;
@@ -325,6 +335,17 @@ h2 {
   scroll-margin-top: 90px;
 }
 
+/* Resume PDF viewer */
+
+.pdf-viewer {
+  display: block;
+  width: 100%;
+  height: 90vh;
+  border: 1px solid var(--light-grey);
+  border-radius: 10px;
+  background-color: white;
+}
+
 /* Footer */
 
 #copyright {
@@ -353,7 +374,7 @@ h2 {
     text-align: center;
   }
 
-  .hex-frame {
+  .photo-frame {
     width: 220px;
   }
 
@@ -361,3 +382,4 @@ h2 {
     flex-direction: column;
   }
 }
+

@@ -199,9 +199,10 @@ h2 {
 /* About section with hexagonal photo */
 
 .about-content {
-    flex-direction: column-reverse;
-    text-align: center;
- }
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
 
 .about-content p {
   flex: 1;

@@ -24,6 +24,12 @@ body {
   line-height: 1.7;
 }
 
+/* Safety net: no image can overflow the page */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Navigation */
 
 nav {
@@ -47,12 +53,12 @@ nav a:hover {
   color: var(--navy-light);
 }
 
-/* Layout */
+/* Layout (wider) */
 
 main {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 3rem auto;
-  padding: 0 4rem;
+  padding: 0 2.5rem;
 }
 
 section {
@@ -190,6 +196,40 @@ h2 {
   color: #999;
 }
 
+/* About section with hexagonal photo */
+
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.about-content p {
+  flex: 1;
+  margin: 0;
+}
+
+/* Outer hexagon acts as the frame border */
+.hex-frame {
+  flex-shrink: 0;
+  width: 280px;
+  aspect-ratio: 0.866;
+  padding: 4px;                 /* frame thickness */
+  background: var(--navy);      /* frame color */
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+/* Inner hexagon holds the photo */
+.hex-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 30%;  /* keeps the face centered */
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
 /* Industry Experience */
 
 .experience-card {
@@ -286,6 +326,8 @@ h2 {
   scroll-margin-top: 90px;
 }
 
+/* Footer */
+
 #copyright {
   text-align: center;
   margin: 4rem 0 2rem;
@@ -296,41 +338,27 @@ h2 {
   margin: 0;
 }
 
-.about-content {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-}
+/* Small screens */
 
-.about-content p {
-  flex: 1;
-  margin: 0;
-}
-
-/* Outer hexagon acts as the frame border */
-.hex-frame {
-  flex-shrink: 0;
-  width: 200px;
-  aspect-ratio: 0.866;
-  padding: 4px;                 /* frame thickness */
-  background: #333;             /* frame color */
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-}
-
-/* Inner hexagon holds the photo */
-.hex-frame img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;  /* keeps the face centered */
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-}
-
-/* Stack photo above text on small screens */
 @media (max-width: 640px) {
+  main {
+    padding: 0 1.25rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
   .about-content {
     flex-direction: column;
     text-align: center;
+  }
+
+  .hex-frame {
+    width: 220px;
+  }
+
+  .experience-card {
+    flex-direction: column;
   }
 }

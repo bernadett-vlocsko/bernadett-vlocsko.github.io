@@ -1,85 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>R. Bernadett Vlocskó, PhD</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Name — Your role</title>
+<meta name="description" content="One sentence about who you are and what you work on.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Triad: red-purple, yellow-orange, blue-green */
+    --plum: #2a0d2b;        /* red-purple, darkened: hero + contact background */
+    --plum-soft: #4b1549;
+    --magenta: #8a1f7c;     /* red-purple: link underlines, outlined buttons */
+    --amber: #f6a81c;       /* yellow-orange: buttons, active link, highlights */
+    --teal: #0e9a91;        /* blue-green: gradient, image placeholders */
+    --teal-deep: #0a6d67;
+    --teal-ink: #064f4b;    /* deeper blue-green: section titles */
+    --teal-tint: #cfe6e3;
+    --paper: #f9f7f8;       /* light sections */
+    --ink: #221522;
+    --muted: #6b5d6b;
+    --line: #e4dce3;
+    --display: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --body: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --wrap: 1120px;
+    --nav-h: 72px;
+  }
 
-  <link rel="stylesheet" href="style.css">
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+  body {
+    margin: 0;
+    font-family: var(--body);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 2px; }
+  .wrap { width: min(100% - 3rem, var(--wrap)); margin-inline: auto; }
 
-  <!-- IBM Plex Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+  /* ---------- Top bar ---------- */
+  .topbar {
+    position: fixed; inset: 0 0 auto 0; z-index: 20;
+    height: var(--nav-h);
+    color: #fff;
+    transition: background-color .25s, box-shadow .25s;
+  }
+  .topbar.is-solid { background: var(--plum); box-shadow: 0 1px 0 rgba(255,255,255,.08); }
+  .topbar .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+  .brand {
+    font-family: var(--display); font-weight: 700; font-size: 1.125rem;
+    letter-spacing: .01em; text-decoration: none;
+  }
+  .nav { display: flex; gap: 1.75rem; }
+  .nav a {
+    text-decoration: none; font-size: .9rem; font-weight: 500;
+    color: rgba(255,255,255,.78); padding: .4rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color .15s, border-color .15s;
+  }
+  .nav a:hover { color: #fff; }
+  .nav a[aria-current="true"] { color: #fff; border-bottom-color: var(--amber); }
+  .menu-btn {
+    display: none; background: none; border: 0; color: #fff;
+    font: 600 1rem var(--body); padding: .5rem 0; cursor: pointer;
+  }
+
+  /* ---------- Hero / About opener ---------- */
+  .hero {
+    min-height: 100vh; min-height: 100svh;
+    display: flex; align-items: center;
+    color: #fff;
+    padding: calc(var(--nav-h) + 3rem) 0 5rem;
+    /* Put your photo next to this file as hero.jpg.
+       Until then the gradient underneath shows through. */
+    background:
+      linear-gradient(90deg, rgba(34,9,35,.86) 0%, rgba(34,9,35,.6) 55%, rgba(34,9,35,.28) 100%),
+      url("hero.jpg") center / cover no-repeat,
+      radial-gradient(110% 90% at 80% 15%, var(--teal) 0%, var(--magenta) 42%, var(--plum) 100%);
+  }
+  .hero-role { margin: 0 0 1.25rem; font-weight: 600; color: var(--amber); font-size: 1rem; }
+  .hero h1 {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(2.1rem, 6.4vw, 5rem);
+    line-height: 1.04; letter-spacing: -.045em;
+    margin: 0; max-width: 17ch; text-wrap: balance;
+  }
+  .hero-lede {
+    margin: 2rem 0 0; max-width: 34rem;
+    font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.65;
+    color: rgba(255,255,255,.9);
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: .875rem; margin-top: 2.5rem; }
+  .btn {
+    display: inline-block; text-decoration: none;
+    font-weight: 600; font-size: .95rem;
+    padding: .9rem 1.4rem; border-radius: 4px;
+    border: 1.5px solid transparent;
+    transition: background-color .15s, border-color .15s, color .15s;
+  }
+  .btn-primary { background: var(--amber); color: #241500; }
+  .btn-primary:hover { background: #ffc04a; }
+  .btn-ghost { border-color: rgba(255,255,255,.55); color: #fff; }
+  .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,.08); }
+  .photo-credit {
+    position: absolute; right: 1.5rem; margin-top: -2.25rem;
+    font-size: .8rem; color: rgba(255,255,255,.6);
+  }
+
+  /* ---------- Shared section styles ---------- */
+  .section { padding: clamp(4rem, 9vw, 7.5rem) 0; }
+  .section + .section { border-top: 1px solid var(--line); }
+  .section h2 {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(2rem, 4.2vw, 3.25rem);
+    line-height: 1.1; letter-spacing: -.035em;
+    margin: 0 0 2.5rem;
+    color: var(--teal-ink);
+  }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+  .about-text p { margin: 0 0 1.2rem; max-width: 62ch; }
+  .about-text p:first-child { font-size: 1.125rem; line-height: 1.6; }
+  .portrait { aspect-ratio: 4 / 5; border-radius: 4px; background: var(--teal-tint) center / cover no-repeat; }
+
+  /* Projects */
+  .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem 2rem; }
+  .project-img { aspect-ratio: 3 / 2; border-radius: 4px; background: var(--teal-tint) center / cover no-repeat; margin-bottom: 1.1rem; }
+  .project h3 { font-family: var(--display); font-weight: 700; font-size: 1.2rem; line-height: 1.25; letter-spacing: -.02em; margin: 0 0 .25rem; }
+  .project-where { margin: 0 0 .6rem; color: var(--muted); font-size: .95rem; font-weight: 500; }
+  .project p { margin: 0 0 .75rem; }
+  .text-link { font-weight: 600; text-decoration-color: var(--magenta); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  .text-link:hover { color: var(--magenta); }
+
+  /* Publications */
+  .pubs-intro { max-width: 62ch; margin: -1rem 0 2.5rem; }
+  .pub-list { list-style: none; margin: 0 0 2.5rem; padding: 0; border-top: 1px solid var(--line); }
+  .pub-list li { display: grid; grid-template-columns: 5rem 1fr; gap: 1rem; padding: 1.15rem 0; border-bottom: 1px solid var(--line); }
+  .pub-year { font-family: var(--display); font-weight: 700; color: var(--magenta); }
+  .pub-title { font-weight: 600; }
+  .pub-venue { color: var(--muted); }
+  .link-row { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .btn-outline { border-color: var(--magenta); color: var(--magenta); }
+  .btn-outline:hover { background: var(--magenta); color: #fff; }
+
+  /* Contact */
+  .contact { background: var(--plum); color: #fff; border-top: 0 !important; position: relative; overflow: hidden; padding-bottom: 2.5rem; }
+  /* Soft blue-green glow in the bottom-right corner, fading into the plum */
+  .contact::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(
+      ellipse 60% 85% at 100% 100%,
+      rgba(14,154,145,.55) 0%,
+      rgba(14,154,145,.28) 30%,
+      rgba(14,154,145,.10) 55%,
+      rgba(14,154,145,0) 75%
+    );
+  }
+  .contact .wrap { position: relative; z-index: 1; }
+  .copyright { margin: clamp(4rem, 9vw, 7rem) 0 0; color: rgba(255,255,255,.55); font-size: .875rem; }
+  .contact h2 { color: #fff; }
+  .contact-mail {
+    display: inline-block; font-family: var(--display); font-weight: 700;
+    font-size: clamp(1.25rem, 3.8vw, 2.5rem); letter-spacing: -.035em;
+    text-decoration-color: var(--amber); text-decoration-thickness: 3px; text-underline-offset: 8px;
+    overflow-wrap: anywhere;
+  }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 1.75rem; margin-top: 2.5rem; }
+  .contact-links a { color: rgba(255,255,255,.8); font-weight: 500; }
+  .contact-links a:hover { color: #7fd8d0; }
+
+  /* ---------- Small screens ---------- */
+  @media (max-width: 860px) {
+    .projects { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; }
+    .portrait { max-width: 22rem; }
+  }
+  @media (max-width: 640px) {
+    .menu-btn { display: block; }
+    .nav {
+      position: absolute; top: var(--nav-h); left: 0; right: 0;
+      flex-direction: column; gap: 0; padding: .5rem 1.5rem 1.25rem;
+      background: var(--plum); display: none;
+    }
+    .nav.is-open { display: flex; }
+    .nav a { padding: .85rem 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .nav a[aria-current="true"] { border-bottom-color: rgba(255,255,255,.1); color: var(--amber); }
+    .projects { grid-template-columns: 1fr; }
+    .pub-list li { grid-template-columns: 1fr; gap: .15rem; }
+    .photo-credit { position: static; margin: 2rem 0 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
 </head>
+<body id="top">
 
-<body>
+<!-- ============ TOP BAR: name left, section links right ============ -->
+<header class="topbar" id="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">Your Name</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="cv.html">CV</a>
-    <a href="research.html">Research</a>
-    <a href="publications.html">Publications</a>
-    <a href="industry.html">Industrial Experience</a>
-  </nav>
+<main>
 
-  <main>
-
-    <header class="page-header">
-      <h1>R. Bernadett Vlocskó, PhD</h1>
-
-      <div class="profile-links">
-        <a href="https://github.com/bernadett-vlocsko" target="_blank" rel="noopener">GitHub</a>
-        <span>•</span>
-        <a href="https://www.linkedin.com/in/bernadett-vlocsko/" target="_blank" rel="noopener">LinkedIn</a>
-        <span>•</span>
-        <a href="https://orcid.org/0009-0004-6373-2257" target="_blank" rel="noopener">ORCID</a>
-        <span>•</span>
-        <a href="https://scholar.google.com/citations?user=BNU6e-cAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+  <!-- ============ HERO: main message over a background photo ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="hero-role">Your role or field</p>
+      <h1>Your main message in a few words</h1>
+      <p class="hero-lede">One or two sentences that say what you do, for how long, and where your work ends up. Keep it concrete.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">View projects</a>
+        <a class="btn btn-ghost" href="#contact">Get in touch</a>
       </div>
-    </header>
+      <!-- <p class="photo-credit">Photo: Name / Source</p> -->
+    </div>
+  </section>
 
-    <section id="about">
-      <div class="about-content">
-        <p>
-          PhD-trained chemist with hands-on experience in organic synthesis and
-          computational chemistry. I am interested in applying physics-based and
-          data-driven modeling approaches to solve challenges in materials,
-          molecular design, and process development.
-        </p>
-
-        <div class="photo-frame">
-          <img src="images/linkedin_portrait1.JPG" alt="R. Bernadett Vlocskó">
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <h2>About</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Opening paragraph: who you are and what you focus on, in plain words.</p>
+          <p>Second paragraph: your background, the teams or labs you have worked with, and the kind of problems you like.</p>
+          <p>Third paragraph, if you need it: what you are doing now or looking for next.</p>
         </div>
+        <!-- Replace with your photo: style="background-image:url('portrait.jpg')" -->
+        <div class="portrait" role="img" aria-label="Portrait of Your Name" style="background-image:url('portrait.jpg')"></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="projects">
-      <h2>Featured Projects</h2>
+  <!-- ============ PROJECTS ============ -->
+  <section class="section" id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <div class="projects">
 
-      <div class="project-card">
-        <h3>Synthetic Experience</h3>
-        <p>
-          Organic synthesis, reaction optimization, purification techniques,
-          and characterization of small molecules.
-        </p>
+        <article class="project">
+          <div class="project-img" role="img" aria-label="Project one" style="background-image:url('project1.jpg')"></div>
+          <h3>Project one</h3>
+          <p class="project-where">Lab, company, or journal</p>
+          <p>One sentence on what it is and what it achieved.</p>
+          <a class="text-link" href="#">Read the paper</a>
+        </article>
+
+        <article class="project">
+          <div class="project-img" role="img" aria-label="Project two" style="background-image:url('project2.jpg')"></div>
+          <h3>Project two</h3>
+          <p class="project-where">Lab, company, or journal</p>
+          <p>One sentence on what it is and what it achieved.</p>
+          <a class="text-link" href="#">View the code</a>
+        </article>
+
+        <article class="project">
+          <div class="project-img" role="img" aria-label="Project three" style="background-image:url('project3.jpg')"></div>
+          <h3>Project three</h3>
+          <p class="project-where">Lab, company, or journal</p>
+          <p>One sentence on what it is and what it achieved.</p>
+          <a class="text-link" href="#">Read the paper</a>
+        </article>
+
+        <!-- Copy an <article class="project"> block to add more -->
       </div>
+    </div>
+  </section>
 
-      <div class="project-card">
-        <h3>Computational Chemistry Experience</h3>
-        <p>
-          Quantum chemistry, molecular modeling, DFT calculations, and
-          data-driven approaches for chemical research.
-        </p>
+  <!-- ============ PUBLICATIONS ============ -->
+  <section class="section" id="publications">
+    <div class="wrap">
+      <h2>Publications</h2>
+      <p class="pubs-intro">A short summary: how many papers or patents, in which areas, and any notable venues.</p>
+      <ul class="pub-list">
+        <li>
+          <span class="pub-year">2026</span>
+          <span><span class="pub-title">Title of the paper.</span> Authors. <span class="pub-venue">Journal or conference.</span> <a class="text-link" href="#">Link</a></span>
+        </li>
+        <li>
+          <span class="pub-year">2025</span>
+          <span><span class="pub-title">Title of the paper.</span> Authors. <span class="pub-venue">Journal or conference.</span> <a class="text-link" href="#">Link</a></span>
+        </li>
+        <li>
+          <span class="pub-year">2024</span>
+          <span><span class="pub-title">Title of the paper.</span> Authors. <span class="pub-venue">Journal or conference.</span> <a class="text-link" href="#">Link</a></span>
+        </li>
+      </ul>
+      <div class="link-row">
+        <a class="btn btn-outline" href="#">Google Scholar</a>
+        <a class="btn btn-outline" href="#">Download CV</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
+  <!-- ============ CONTACT ============ -->
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <a class="contact-mail" href="mailto:you@example.com">you@example.com</a>
+      <div class="contact-links">
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="#">Google Scholar</a>
+        <a href="#">CV</a>
+      </div>
+      <p class="copyright">© <span id="year"></span> Your Name</p>
+    </div>
+  </section>
 
-  <!-- Copyright -->
-  <footer id="copyright">
-    <p>&copy; R. Bernadett Vlocskó</p>
-  </footer>
+</main>
 
+<script>
+  // Top bar turns solid once you scroll past the top of the photo
+  const topbar = document.getElementById('topbar');
+  const onScroll = () => topbar.classList.toggle('is-solid', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  menuBtn.addEventListener('click', () => {
+    const open = nav.classList.toggle('is-open');
+    menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.textContent = open ? 'Close' : 'Menu';
+    if (open) topbar.classList.add('is-solid'); else onScroll();
+  });
+  nav.addEventListener('click', e => {
+    if (e.target.tagName === 'A') {
+      nav.classList.remove('is-open');
+      menuBtn.setAttribute('aria-expanded', false);
+      menuBtn.textContent = 'Menu';
+    }
+  });
+
+  // Underline the link for the section currently on screen
+  const links = [...nav.querySelectorAll('a')];
+  const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+  const setCurrent = () => {
+    const mark = window.scrollY + window.innerHeight * 0.35;
+    let current = null;
+    sections.forEach(s => { if (s.offsetTop <= mark) current = s; });
+    links.forEach(a => {
+      if (current && a.getAttribute('href') === '#' + current.id) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
+    });
+  };
+  window.addEventListener('scroll', setCurrent, { passive: true });
+  window.addEventListener('resize', setCurrent);
+  setCurrent();
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>

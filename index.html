@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Your Name — Your role</title>
-<meta name="description" content="One sentence about who you are and what you work on.">
+<title>R. Bernadett Vlocskó, PhD — Postdoctoral researcher, UMass Boston</title>
+<meta name="description" content="R. Bernadett Vlocskó, PhD. Postdoctoral researcher at UMass Boston working in organic synthesis and computational chemistry: modeling for materials, molecular design, and process development.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -78,11 +78,11 @@
     display: flex; align-items: center;
     color: #fff;
     padding: calc(var(--nav-h) + 3rem) 0 5rem;
-    /* Put your photo next to this file as hero.jpg.
+    /* Save your background photo as images/hero.jpg.
        Until then the gradient underneath shows through. */
     background:
       linear-gradient(90deg, rgba(34,9,35,.86) 0%, rgba(34,9,35,.6) 55%, rgba(34,9,35,.28) 100%),
-      url("hero.jpg") center / cover no-repeat,
+      url("images/hero.jpg") center / cover no-repeat,
       radial-gradient(110% 90% at 80% 15%, var(--teal) 0%, var(--magenta) 42%, var(--plum) 100%);
   }
   .hero-role { margin: 0 0 1.25rem; font-weight: 600; color: var(--amber); font-size: 1rem; }
@@ -117,18 +117,29 @@
   /* ---------- Shared section styles ---------- */
   .section { padding: clamp(4rem, 9vw, 7.5rem) 0; }
   .section + .section { border-top: 1px solid var(--line); }
+  .eyebrow {
+    margin: 0 0 .5rem; font-size: .8rem; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: var(--magenta);
+  }
   .section h2 {
     font-family: var(--display); font-weight: 700;
-    font-size: clamp(2rem, 4.2vw, 3.25rem);
-    line-height: 1.1; letter-spacing: -.035em;
-    margin: 0 0 2.5rem;
+    font-size: clamp(1.6rem, 3vw, 2.25rem);
+    line-height: 1.15; letter-spacing: -.03em;
+    margin: 0 0 2.75rem;
     color: var(--teal-ink);
+  }
+  /* Short yellow-orange line under each section title */
+  .section h2::after {
+    content: ""; display: block;
+    width: 3.25rem; height: 3px; margin-top: 1.1rem;
+    background: var(--amber);
   }
 
   /* About */
   .about-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
   .about-text p { margin: 0 0 1.2rem; max-width: 62ch; }
-  .about-text p:first-child { font-size: 1.125rem; line-height: 1.6; }
+  .about-text p:first-child { font-size: 1.2rem; line-height: 1.65; }
   .portrait { aspect-ratio: 4 / 5; border-radius: 4px; background: var(--teal-tint) center / cover no-repeat; }
 
   /* Projects */
@@ -141,8 +152,14 @@
   .text-link:hover { color: var(--magenta); }
 
   /* Publications */
-  .pubs-intro { max-width: 62ch; margin: -1rem 0 2.5rem; }
-  .pub-list { list-style: none; margin: 0 0 2.5rem; padding: 0; border-top: 1px solid var(--line); }
+  .pub-group { font-family: var(--display); font-weight: 700; font-size: 1.2rem; letter-spacing: -.02em; margin: 0 0 1rem; color: var(--teal-ink); }
+  .pub-authors, .pub-title, .pub-venue { display: block; }
+  .pub-authors { color: var(--muted); font-size: .92rem; }
+  .pub-authors .me { color: var(--ink); font-weight: 700; }
+  .pub-title { margin: .2rem 0; }
+  .pub-venue { font-size: .92rem; }
+  .pub-venue .text-link { margin-left: .5rem; color: var(--ink); }
+  .pub-list { list-style: none; margin: 0 0 3.5rem; padding: 0; border-top: 1px solid var(--line); }
   .pub-list li { display: grid; grid-template-columns: 5rem 1fr; gap: 1rem; padding: 1.15rem 0; border-bottom: 1px solid var(--line); }
   .pub-year { font-family: var(--display); font-weight: 700; color: var(--magenta); }
   .pub-title { font-weight: 600; }
@@ -167,9 +184,10 @@
   .contact .wrap { position: relative; z-index: 1; }
   .copyright { margin: clamp(4rem, 9vw, 7rem) 0 0; color: rgba(255,255,255,.55); font-size: .875rem; }
   .contact h2 { color: #fff; }
+  .contact .eyebrow { color: var(--amber); }
   .contact-mail {
     display: inline-block; font-family: var(--display); font-weight: 700;
-    font-size: clamp(1.25rem, 3.8vw, 2.5rem); letter-spacing: -.035em;
+    font-size: clamp(1.2rem, 3.6vw, 2.4rem); letter-spacing: -.035em;
     text-decoration-color: var(--amber); text-decoration-thickness: 3px; text-underline-offset: 8px;
     overflow-wrap: anywhere;
   }
@@ -185,6 +203,7 @@
   }
   @media (max-width: 640px) {
     .menu-btn { display: block; }
+    .brand { font-size: .95rem; letter-spacing: -.02em; }
     .nav {
       position: absolute; top: var(--nav-h); left: 0; right: 0;
       flex-direction: column; gap: 0; padding: .5rem 1.5rem 1.25rem;
@@ -208,7 +227,7 @@
 <!-- ============ TOP BAR: name left, section links right ============ -->
 <header class="topbar" id="topbar">
   <div class="wrap">
-    <a class="brand" href="#top">Your Name</a>
+    <a class="brand" href="#top">R. Bernadett Vlocskó, PhD</a>
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Sections">
       <a href="#about">About</a>
@@ -224,9 +243,9 @@
   <!-- ============ HERO: main message over a background photo ============ -->
   <section class="hero">
     <div class="wrap">
-      <p class="hero-role">Your role or field</p>
-      <h1>Your main message in a few words</h1>
-      <p class="hero-lede">One or two sentences that say what you do, for how long, and where your work ends up. Keep it concrete.</p>
+      <p class="hero-role">Postdoctoral researcher, UMass Boston</p>
+      <h1>Synthesis and modeling for molecular design</h1>
+      <p class="hero-lede">Physics-based and data-driven modeling, grounded in hands-on organic synthesis, for challenges in materials, molecular design, and process development.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#projects">View projects</a>
         <a class="btn btn-ghost" href="#contact">Get in touch</a>
@@ -241,12 +260,10 @@
       <h2>About</h2>
       <div class="about-grid">
         <div class="about-text">
-          <p>Opening paragraph: who you are and what you focus on, in plain words.</p>
-          <p>Second paragraph: your background, the teams or labs you have worked with, and the kind of problems you like.</p>
-          <p>Third paragraph, if you need it: what you are doing now or looking for next.</p>
+          <p>PhD-trained chemist with hands-on experience in organic synthesis and computational chemistry. I am interested in applying physics-based and data-driven modeling approaches to solve challenges in materials, molecular design, and process development.</p>
         </div>
-        <!-- Replace with your photo: style="background-image:url('portrait.jpg')" -->
-        <div class="portrait" role="img" aria-label="Portrait of Your Name" style="background-image:url('portrait.jpg')"></div>
+        <!-- Your photo: save it as images/portrait.jpg, or change the path below -->
+        <div class="portrait" role="img" aria-label="Portrait of R. Bernadett Vlocskó" style="background-image:url('images/portrait.jpg')"></div>
       </div>
     </div>
   </section>
@@ -254,11 +271,12 @@
   <!-- ============ PROJECTS ============ -->
   <section class="section" id="projects">
     <div class="wrap">
+      <p class="eyebrow">Selected work</p>
       <h2>Projects</h2>
       <div class="projects">
 
         <article class="project">
-          <div class="project-img" role="img" aria-label="Project one" style="background-image:url('project1.jpg')"></div>
+          <div class="project-img" role="img" aria-label="Project one" style="background-image:url('images/project1.jpg')"></div>
           <h3>Project one</h3>
           <p class="project-where">Lab, company, or journal</p>
           <p>One sentence on what it is and what it achieved.</p>
@@ -266,7 +284,7 @@
         </article>
 
         <article class="project">
-          <div class="project-img" role="img" aria-label="Project two" style="background-image:url('project2.jpg')"></div>
+          <div class="project-img" role="img" aria-label="Project two" style="background-image:url('images/project2.jpg')"></div>
           <h3>Project two</h3>
           <p class="project-where">Lab, company, or journal</p>
           <p>One sentence on what it is and what it achieved.</p>
@@ -274,7 +292,7 @@
         </article>
 
         <article class="project">
-          <div class="project-img" role="img" aria-label="Project three" style="background-image:url('project3.jpg')"></div>
+          <div class="project-img" role="img" aria-label="Project three" style="background-image:url('images/project3.jpg')"></div>
           <h3>Project three</h3>
           <p class="project-where">Lab, company, or journal</p>
           <p>One sentence on what it is and what it achieved.</p>
@@ -289,25 +307,149 @@
   <!-- ============ PUBLICATIONS ============ -->
   <section class="section" id="publications">
     <div class="wrap">
+      <p class="eyebrow">Research</p>
       <h2>Publications</h2>
-      <p class="pubs-intro">A short summary: how many papers or patents, in which areas, and any notable venues.</p>
+      <h3 class="pub-group">Peer-reviewed publications</h3>
       <ul class="pub-list">
         <li>
           <span class="pub-year">2026</span>
-          <span><span class="pub-title">Title of the paper.</span> Authors. <span class="pub-venue">Journal or conference.</span> <a class="text-link" href="#">Link</a></span>
+          <span class="pub-body">
+            <span class="pub-authors">Zsengellér, K. Zs., Mastyugin, M., Fusco, R. A., <span class="me">Vlocskó, R. B.</span>, Ferguson, C., Pintye, D., Nasim, H., Salahuddin, S., Young, C. B., Török, B., Török, M.</span>
+            <span class="pub-title">Impact of Structural Features on the Antioxidant Activity of Organofluorine Diaryl Hydrazones.</span>
+            <span class="pub-venue"><em>Molecules</em>, 2026, <em>31</em>, 78. <a class="text-link" href="https://doi.org/10.3390/molecules31010078" target="_blank" rel="noopener">DOI</a></span>
+          </span>
         </li>
         <li>
           <span class="pub-year">2025</span>
-          <span><span class="pub-title">Title of the paper.</span> Authors. <span class="pub-venue">Journal or conference.</span> <a class="text-link" href="#">Link</a></span>
+          <span class="pub-body">
+            <span class="pub-authors"><span class="me">Vlocskó, R. B.</span>, Mastyugin, M., Zsengellér, K. Zs., Török, M., Török, B.</span>
+            <span class="pub-title">Development of Diaryl Hydrazones for Alleviation of Mitochondrial Oxidative Stress in Preeclampsia.</span>
+            <span class="pub-venue"><em>Journal of Medicinal Chemistry</em>, 2025, <em>68</em>, 10075–10091. <a class="text-link" href="https://doi.org/10.1021/acs.jmedchem.5c00010" target="_blank" rel="noopener">DOI</a></span>
+          </span>
+        </li>
+        <li>
+          <span class="pub-year">2025</span>
+          <span class="pub-body">
+            <span class="pub-authors"><span class="me">Vlocskó, R. B.</span>, Mastyugin, M., Török, B., &amp; Török, M.</span>
+            <span class="pub-title">Correlation of physicochemical properties with antioxidant activity in phenol and thiophenol analogues.</span>
+            <span class="pub-venue"><em>Scientific Reports</em>, 2025, <em>15</em>, 73. <a class="text-link" href="https://doi.org/10.1038/s41598-024-83982-4" target="_blank" rel="noopener">DOI</a></span>
+          </span>
+        </li>
+        <li>
+          <span class="pub-year">2025</span>
+          <span class="pub-body">
+            <span class="pub-authors">Zsengellér, Z. K., Mastyugin, M., Fusco, A. R., <span class="me">Vlocskó, R. B.</span>, Costa, M., Ferguson, C., Pintye, D., Sziva, R. E., Salahuddin, S., Young, C. B., Török, M., &amp; Török, B.</span>
+            <span class="pub-title">Mitigating oxidative stress and Anti-angiogenic state in an in vitro model of preeclampsia by Hy-12, an organofluorine hydrazone antioxidant.</span>
+            <span class="pub-venue"><em>Current Issues in Molecular Biology</em>, 2025, <em>47</em>, 680. <a class="text-link" href="https://doi.org/10.3390/cimb47090680" target="_blank" rel="noopener">DOI</a></span>
+          </span>
+        </li>
+        <li>
+          <span class="pub-year">2025</span>
+          <span class="pub-body">
+            <span class="pub-authors">Plasse, K., Wright, V., Xie, G., <span class="me">Vlocskó, R. B.</span>, Lazarev, A., Török, B.</span>
+            <span class="pub-title">High-Pressure Activation for the Solvent- and Catalyst-Free Syntheses of Heterocycles, Pharmaceuticals and Esters.</span>
+            <span class="pub-venue"><em>Beilstein Journal of Organic Chemistry</em>, 2025, <em>21</em>, 1374–1387. <a class="text-link" href="https://doi.org/10.3762/bjoc.21.102" target="_blank" rel="noopener">DOI</a></span>
+          </span>
         </li>
         <li>
           <span class="pub-year">2024</span>
-          <span><span class="pub-title">Title of the paper.</span> Authors. <span class="pub-venue">Journal or conference.</span> <a class="text-link" href="#">Link</a></span>
+          <span class="pub-body">
+            <span class="pub-authors"><span class="me">Vlocskó, R. B.</span>, Mishra, M., Stoica, A. I., Gustin, L., &amp; Török, B.</span>
+            <span class="pub-title">Catalyst-free synthesis of substituted benzimidazoles and benzothiazoles in a sustainable solvent.</span>
+            <span class="pub-venue"><em>Tetrahedron Green Chemistry</em>, 2024, <em>3</em>, 100035. <a class="text-link" href="https://doi.org/10.1016/j.tgchem.2023.100035" target="_blank" rel="noopener">DOI</a></span>
+          </span>
+        </li>
+        <li>
+          <span class="pub-year">2023</span>
+          <span class="pub-body">
+            <span class="pub-authors"><span class="me">Vlocskó, R. B.</span>, Xie, G., &amp; Török, B.</span>
+            <span class="pub-title">Green synthesis of aromatic nitrogen-containing heterocycles by catalytic and non-traditional activation methods.</span>
+            <span class="pub-venue"><em>Molecules</em>, 2023, <em>28</em>, 4153. <a class="text-link" href="https://doi.org/10.3390/molecules28104153" target="_blank" rel="noopener">DOI</a></span>
+          </span>
+        </li>
+        <li>
+          <span class="pub-year">2022</span>
+          <span class="pub-body">
+            <span class="pub-authors">Schäfer, C., Cho, H., <span class="me">Vlocskó, R. B.</span>, Xie, G., &amp; Török, B.</span>
+            <span class="pub-title">Recent advances in the green synthesis of heterocycles: From building blocks to biologically active compounds.</span>
+            <span class="pub-venue"><em>Current Organic Synthesis</em>, 2022, <em>19</em>, 426–462. <a class="text-link" href="https://doi.org/10.2174/1570179418666210910110205" target="_blank" rel="noopener">DOI</a></span>
+          </span>
+        </li>
+        <li>
+          <span class="pub-year">2020</span>
+          <span class="pub-body">
+            <span class="pub-authors">Kunfi, A., <span class="me">Vlocskó, R. B.</span>, Keresztes, Z., Mohai, M., Bertóti, I., Ábrahám, Á., Kiss, E., &amp; London, G.</span>
+            <span class="pub-title">Photoswitchable Macroscopic Solid Surfaces Based On Azobenzene‐Functionalized Polydopamine/Gold Nanoparticle Composite Materials: Formation, Isomerization and Ligand Exchange.</span>
+            <span class="pub-venue"><em>ChemPlusChem</em>, 2020, <em>85</em>, 797–805. <a class="text-link" href="https://doi.org/10.1002/cplu.201900674" target="_blank" rel="noopener">DOI</a></span>
+          </span>
+        </li>
+      </ul>
+      <h3 class="pub-group">Book chapters</h3>
+      <ul class="pub-list">
+        <li>
+          <span class="pub-year">2025</span>
+          <span class="pub-body">
+            <span class="pub-authors"><span class="me">Vlocskó, R. B.</span>, Török, M.</span>
+            <span class="pub-title">Harnessing the Multitarget Approach for Green and Sustainable Drug Discovery.</span>
+            <span class="pub-venue"><em>Encyclopedia of Green Chemistry</em>, Volume 1, Eds. Vaccaro, L., Török, B. 1st edition, Elsevier, 2025. <a class="text-link" href="https://doi.org/10.1016/B978-0-12-822248-5.00016-4" target="_blank" rel="noopener">DOI</a></span>
+          </span>
+        </li>
+        <li>
+          <span class="pub-year">2022</span>
+          <span class="pub-body">
+            <span class="pub-authors">Xie, G., <span class="me">Vlocskó, R. B.</span>, Török, B.</span>
+            <span class="pub-title">Green Synthetic Methods in Drug Discovery and Development.</span>
+            <span class="pub-venue"><em>Contemporary Chemical Approaches for Green and Sustainable Drugs</em>, Ed. Török, M. 1st edition, Elsevier, 2022. <a class="text-link" href="https://doi.org/10.1016/B978-0-12-822248-5.00015-2" target="_blank" rel="noopener">DOI</a></span>
+          </span>
+        </li>
+        <li>
+          <span class="pub-year">2022</span>
+          <span class="pub-body">
+            <span class="pub-authors"><span class="me">Vlocskó, R. B.</span>, Apaydin, S., Török, B., Török, M.</span>
+            <span class="pub-title">The Multitarget Approach as a Green Tool in Medicinal Chemistry.</span>
+            <span class="pub-venue"><em>Contemporary Chemical Approaches for Green and Sustainable Drugs</em>, Ed. Török, M. 1st edition, Elsevier, 2022. <a class="text-link" href="https://doi.org/10.1016/B978-0-12-822248-5.00016-4" target="_blank" rel="noopener">DOI</a></span>
+          </span>
+        </li>
+      </ul>
+      <h3 class="pub-group">Conference presence</h3>
+      <ul class="pub-list">
+        <li>
+          <span class="pub-year">2025</span>
+          <span class="pub-body">
+            <span class="pub-authors"><span class="me">Vlocskó, R. B.</span>, Mastyugin, M., Gustin, L., Zsengellér, Zs., Török, M., Török, B.</span>
+            <span class="pub-title">Exploring Antioxidant Effects of Organofluorine Diphenyl Hydrazone Quaternary Salts in Preeclampsia Therapy: a DFT Approach.</span>
+            <span class="pub-venue"><em>ACS Spring Meeting</em>, 2025 (oral).</span>
+          </span>
+        </li>
+        <li>
+          <span class="pub-year">2024</span>
+          <span class="pub-body">
+            <span class="pub-authors"><span class="me">Vlocskó, R. B.</span>, Mishra, M., Stoica, A., Gustin, L., Török, B.</span>
+            <span class="pub-title">Catalyst-free Approaches in Green Synthesis: Environmentally Benign Synthesis of Benzimidazoles and Benzothiazoles in a Sustainable Solvent.</span>
+            <span class="pub-venue"><em>28th Annual GC&amp;E Conference</em>, 2024 (poster).</span>
+          </span>
+        </li>
+        <li>
+          <span class="pub-year">2024</span>
+          <span class="pub-body">
+            <span class="pub-authors"><span class="me">Vlocskó, R. B.</span>, Mastyugin, M., Török, B., Török, M.</span>
+            <span class="pub-title">Assessing Antioxidant Activity Through Theory and Experiments: A Comparative DFT Study of Phenol and Thiophenol Analogues.</span>
+            <span class="pub-venue"><em>ACS Spring Meeting</em>, 2024 (poster).</span>
+          </span>
+        </li>
+        <li>
+          <span class="pub-year">2016</span>
+          <span class="pub-body">
+            <span class="pub-authors"><span class="me">Vlocskó, R. B.</span>, Szőllősi Gy.</span>
+            <span class="pub-title">Cinchona Alkaloids Catalysed Asymmetric Michael Addition of Acetylbutyrolactone to Activated Olefins.</span>
+            <span class="pub-venue"><em>1st Hungarian-Norwegian Summer School on Bioactive Substance Research</em>, Tromsø, Norway, 2016 (oral).</span>
+          </span>
         </li>
       </ul>
       <div class="link-row">
-        <a class="btn btn-outline" href="#">Google Scholar</a>
-        <a class="btn btn-outline" href="#">Download CV</a>
+        <a class="btn btn-outline" href="https://scholar.google.com/citations?user=BNU6e-cAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a class="btn btn-outline" href="https://orcid.org/0009-0004-6373-2257" target="_blank" rel="noopener">ORCID</a>
+        <a class="btn btn-outline" href="Bernadett_Vlocsko_2026.pdf">Download CV</a>
       </div>
     </div>
   </section>
@@ -315,15 +457,18 @@
   <!-- ============ CONTACT ============ -->
   <section class="section contact" id="contact">
     <div class="wrap">
+      <p class="eyebrow">Get in touch</p>
       <h2>Contact</h2>
-      <a class="contact-mail" href="mailto:you@example.com">you@example.com</a>
+      <!-- When you have an email to publish, swap this for: <a class="contact-mail" href="mailto:you@example.com">you@example.com</a> -->
+      <a class="contact-mail" href="https://www.linkedin.com/in/bernadett-vlocsko/" target="_blank" rel="noopener">Message me on LinkedIn</a>
       <div class="contact-links">
-        <a href="#">LinkedIn</a>
-        <a href="#">GitHub</a>
-        <a href="#">Google Scholar</a>
-        <a href="#">CV</a>
+        <a href="https://github.com/bernadett-vlocsko" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/bernadett-vlocsko/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://orcid.org/0009-0004-6373-2257" target="_blank" rel="noopener">ORCID</a>
+        <a href="https://scholar.google.com/citations?user=BNU6e-cAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="Bernadett_Vlocsko_2026.pdf">CV</a>
       </div>
-      <p class="copyright">© <span id="year"></span> Your Name</p>
+      <p class="copyright">© <span id="year"></span> R. Bernadett Vlocskó</p>
     </div>
   </section>
 

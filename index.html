@@ -7,7 +7,7 @@
 <meta name="description" content="R. Bernadett Vlocskó, PhD. Postdoctoral researcher at UMass Boston working in organic synthesis and computational chemistry: modeling for materials, molecular design, and process development.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     /* Triad: red-purple, yellow-orange, blue-green */
@@ -23,8 +23,8 @@
     --ink: #221522;
     --muted: #6b5d6b;
     --line: #e4dce3;
-    --display: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    --body: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --display: "Poppins", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;   /* name, titles, buttons */
+    --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;   /* your device's own font */
     --wrap: 1120px;
     --nav-h: 72px;
   }
@@ -34,8 +34,8 @@
   body {
     margin: 0;
     font-family: var(--body);
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 1.0625rem;
+    line-height: 1.6;
     color: var(--ink);
     background: var(--paper);
     -webkit-font-smoothing: antialiased;
@@ -56,11 +56,11 @@
   .topbar .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; }
   .brand {
     font-family: var(--display); font-weight: 700; font-size: 1.125rem;
-    letter-spacing: .01em; text-decoration: none;
+    letter-spacing: 0; text-decoration: none;
   }
   .nav { display: flex; gap: 1.75rem; }
   .nav a {
-    text-decoration: none; font-size: .9rem; font-weight: 500;
+    text-decoration: none; font-size: .975rem; font-weight: 500;
     color: rgba(255,255,255,.78); padding: .4rem 0;
     border-bottom: 2px solid transparent;
     transition: color .15s, border-color .15s;
@@ -85,22 +85,22 @@
       url("images/hero.jpg") center / cover no-repeat,
       radial-gradient(110% 90% at 80% 15%, var(--teal) 0%, var(--magenta) 42%, var(--plum) 100%);
   }
-  .hero-role { margin: 0 0 1.25rem; font-weight: 600; color: var(--amber); font-size: 1rem; }
+  .hero-role { margin: 0 0 1.25rem; font-family: var(--display); font-weight: 600; color: var(--amber); font-size: 1rem; }
   .hero h1 {
     font-family: var(--display); font-weight: 700;
-    font-size: clamp(2.1rem, 6.4vw, 5rem);
-    line-height: 1.04; letter-spacing: -.045em;
-    margin: 0; max-width: 17ch; text-wrap: balance;
+    font-size: clamp(2.4rem, 7vw, 5.25rem);
+    line-height: 1.06; letter-spacing: -.02em;
+    margin: 0; max-width: 11em; text-wrap: balance;
   }
   .hero-lede {
     margin: 2rem 0 0; max-width: 34rem;
-    font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.65;
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem); line-height: 1.55;
     color: rgba(255,255,255,.9);
   }
   .hero-actions { display: flex; flex-wrap: wrap; gap: .875rem; margin-top: 2.5rem; }
   .btn {
     display: inline-block; text-decoration: none;
-    font-weight: 600; font-size: .95rem;
+    font-family: var(--display); font-weight: 600; font-size: .95rem;
     padding: .9rem 1.4rem; border-radius: 4px;
     border: 1.5px solid transparent;
     transition: background-color .15s, border-color .15s, color .15s;
@@ -118,14 +118,14 @@
   .section { padding: clamp(4rem, 9vw, 7.5rem) 0; }
   .section + .section { border-top: 1px solid var(--line); }
   .eyebrow {
-    margin: 0 0 .5rem; font-size: .8rem; font-weight: 600;
+    margin: 0 0 .5rem; font-family: var(--display); font-size: .8rem; font-weight: 600;
     letter-spacing: .16em; text-transform: uppercase;
     color: var(--magenta);
   }
   .section h2 {
     font-family: var(--display); font-weight: 700;
     font-size: clamp(1.6rem, 3vw, 2.25rem);
-    line-height: 1.15; letter-spacing: -.03em;
+    line-height: 1.15; letter-spacing: -.01em;
     margin: 0 0 2.75rem;
     color: var(--teal-ink);
   }
@@ -139,25 +139,25 @@
   /* About */
   .about-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
   .about-text p { margin: 0 0 1.2rem; max-width: 62ch; }
-  .about-text p:first-child { font-size: 1.2rem; line-height: 1.65; }
+  .about-text p:first-child { font-size: 1.25rem; line-height: 1.55; }
   .portrait { aspect-ratio: 4 / 5; border-radius: 4px; background: var(--teal-tint) center / cover no-repeat; }
 
   /* Projects */
   .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem 2rem; }
   .project-img { aspect-ratio: 3 / 2; border-radius: 4px; background: var(--teal-tint) center / cover no-repeat; margin-bottom: 1.1rem; }
-  .project h3 { font-family: var(--display); font-weight: 700; font-size: 1.2rem; line-height: 1.25; letter-spacing: -.02em; margin: 0 0 .25rem; }
+  .project h3 { font-family: var(--display); font-weight: 700; font-size: 1.2rem; line-height: 1.25; letter-spacing: -.005em; margin: 0 0 .25rem; }
   .project-where { margin: 0 0 .6rem; color: var(--muted); font-size: .95rem; font-weight: 500; }
   .project p { margin: 0 0 .75rem; }
   .text-link { font-weight: 600; text-decoration-color: var(--magenta); text-decoration-thickness: 2px; text-underline-offset: 4px; }
   .text-link:hover { color: var(--magenta); }
 
   /* Publications */
-  .pub-group { font-family: var(--display); font-weight: 700; font-size: 1.2rem; letter-spacing: -.02em; margin: 0 0 1rem; color: var(--teal-ink); }
+  .pub-group { font-family: var(--display); font-weight: 700; font-size: 1.15rem; letter-spacing: 0; margin: 0 0 1rem; color: var(--teal-ink); }
   .pub-authors, .pub-title, .pub-venue { display: block; }
-  .pub-authors { color: var(--muted); font-size: .92rem; }
+  .pub-authors { color: var(--muted); font-size: .95rem; }
   .pub-authors .me { color: var(--ink); font-weight: 700; }
   .pub-title { margin: .2rem 0; }
-  .pub-venue { font-size: .92rem; }
+  .pub-venue { font-size: .95rem; }
   .pub-venue .text-link { margin-left: .5rem; color: var(--ink); }
   .pub-list { list-style: none; margin: 0 0 3.5rem; padding: 0; border-top: 1px solid var(--line); }
   .pub-list li { display: grid; grid-template-columns: 5rem 1fr; gap: 1rem; padding: 1.15rem 0; border-bottom: 1px solid var(--line); }
@@ -187,7 +187,7 @@
   .contact .eyebrow { color: var(--amber); }
   .contact-mail {
     display: inline-block; font-family: var(--display); font-weight: 700;
-    font-size: clamp(1.2rem, 3.6vw, 2.4rem); letter-spacing: -.035em;
+    font-size: clamp(1.3rem, 3.8vw, 2.5rem); letter-spacing: -.015em;
     text-decoration-color: var(--amber); text-decoration-thickness: 3px; text-underline-offset: 8px;
     overflow-wrap: anywhere;
   }
@@ -203,7 +203,7 @@
   }
   @media (max-width: 640px) {
     .menu-btn { display: block; }
-    .brand { font-size: .95rem; letter-spacing: -.02em; }
+    .brand { font-size: 1rem; }
     .nav {
       position: absolute; top: var(--nav-h); left: 0; right: 0;
       flex-direction: column; gap: 0; padding: .5rem 1.5rem 1.25rem;

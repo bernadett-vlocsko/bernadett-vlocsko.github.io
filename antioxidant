@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Small molecule antioxidant development — R. Bernadett Vlocskó, PhD</title>
+<meta name="description" content="PhD project at UMass Boston on developing small molecule antioxidants, in collaboration with Marianna Török and Zsuzsanna Zsengellér.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Same palette and type as index.html */
+    --plum: #2a0d2b;
+    --plum-soft: #4b1549;
+    --magenta: #8a1f7c;
+    --amber: #f6a81c;
+    --teal: #0e9a91;
+    --teal-deep: #0a6d67;
+    --teal-ink: #064f4b;
+    --teal-tint: #cfe6e3;
+    --paper: #f9f7f8;
+    --ink: #221522;
+    --muted: #6b5d6b;
+    --line: #e4dce3;
+    --display: "Poppins", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --wrap: 1120px;
+    --nav-h: 72px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+  body {
+    margin: 0;
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 2px; }
+  .wrap { width: min(100% - 3rem, var(--wrap)); margin-inline: auto; }
+
+  /* ---------- Top bar (always solid on this page) ---------- */
+  .topbar {
+    position: fixed; inset: 0 0 auto 0; z-index: 20;
+    height: var(--nav-h);
+    color: #fff;
+    background: var(--plum); box-shadow: 0 1px 0 rgba(255,255,255,.08);
+  }
+  .topbar .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+  .brand {
+    font-family: var(--display); font-weight: 700; font-size: 1.125rem;
+    letter-spacing: 0; text-decoration: none;
+  }
+  .nav { display: flex; gap: 1.75rem; }
+  .nav a {
+    text-decoration: none; font-size: .975rem; font-weight: 500;
+    color: rgba(255,255,255,.78); padding: .4rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color .15s, border-color .15s;
+  }
+  .nav a:hover { color: #fff; }
+  .nav a[aria-current="true"] { color: #fff; border-bottom-color: var(--amber); }
+  .menu-btn {
+    display: none; background: none; border: 0; color: #fff;
+    font: 600 1rem var(--body); padding: .5rem 0; cursor: pointer;
+  }
+
+  /* ---------- Project header ---------- */
+  .project-hero {
+    color: #fff;
+    padding: calc(var(--nav-h) + clamp(2.5rem, 7vw, 5rem)) 0 clamp(2.5rem, 6vw, 4.5rem);
+    background: radial-gradient(110% 120% at 85% 0%, var(--teal) 0%, var(--magenta) 40%, var(--plum) 100%);
+  }
+  .back-link {
+    display: inline-block; margin-bottom: 2rem;
+    font-weight: 500; font-size: .95rem; text-decoration: none;
+    color: rgba(255,255,255,.8);
+  }
+  .back-link:hover { color: #fff; }
+  .project-kicker { margin: 0 0 1rem; font-family: var(--display); font-weight: 600; color: var(--amber); font-size: 1rem; }
+  .project-hero h1 {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(2rem, 5.5vw, 3.75rem);
+    line-height: 1.08; letter-spacing: -.02em;
+    margin: 0; max-width: 16em; text-wrap: balance;
+  }
+  .project-meta { margin: 1.5rem 0 0; font-size: clamp(1.0625rem, 1.5vw, 1.2rem); color: rgba(255,255,255,.9); }
+
+  /* ---------- Shared section styles ---------- */
+  .section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+  .section + .section { border-top: 1px solid var(--line); }
+  .eyebrow {
+    margin: 0 0 .5rem; font-family: var(--display); font-size: .8rem; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: var(--magenta);
+  }
+  .section h2 {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(1.6rem, 3vw, 2.25rem);
+    line-height: 1.15; letter-spacing: -.01em;
+    margin: 0 0 2.25rem;
+    color: var(--teal-ink);
+  }
+  .section h2::after {
+    content: ""; display: block;
+    width: 3.25rem; height: 3px; margin-top: 1.1rem;
+    background: var(--amber);
+  }
+
+  /* Figure */
+  .figure { margin: 0; }
+  .figure img { width: 100%; height: auto; border-radius: 4px; }
+  .figure figcaption { margin-top: .9rem; color: var(--muted); font-size: .95rem; max-width: 70ch; }
+
+  /* Overview */
+  .overview-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+  .overview-text p { margin: 0 0 1.2rem; max-width: 62ch; }
+  .overview-text p:first-child { font-size: 1.25rem; line-height: 1.55; }
+  .facts { margin: 0; padding: 1.5rem 1.6rem; background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--teal); border-radius: 4px; }
+  .facts dt {
+    font-family: var(--display); font-size: .75rem; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--magenta);
+  }
+  .facts dd { margin: .2rem 0 1.2rem; font-weight: 500; }
+  .facts dd:last-child { margin-bottom: 0; }
+
+  /* Framework tabs */
+  .tabs { display: flex; flex-wrap: wrap; gap: .25rem 2rem; border-bottom: 1px solid var(--line); margin-bottom: 2rem; }
+  .tab {
+    appearance: none; background: none; border: 0; cursor: pointer;
+    font-family: var(--display); font-weight: 600; font-size: 1.05rem;
+    color: var(--muted); padding: .75rem 0; margin-bottom: -1px;
+    border-bottom: 3px solid transparent;
+    transition: color .15s, border-color .15s;
+  }
+  .tab:hover { color: var(--ink); }
+  .tab[aria-selected="true"] { color: var(--teal-ink); border-bottom-color: var(--amber); }
+  .tab-panel { background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--teal); border-radius: 4px; padding: clamp(1.5rem, 4vw, 2.5rem); }
+  .tab-panel + .tab-panel { margin-top: 1.5rem; }
+  .js-tabs .tab-panel + .tab-panel { margin-top: 0; }
+  .tab-panel[hidden] { display: none; }
+  .tab-panel h3 { font-family: var(--display); font-weight: 700; font-size: 1.4rem; line-height: 1.2; letter-spacing: -.005em; margin: 0 0 .5rem; color: var(--ink); }
+  .tab-sub { margin: 0; font-size: 1.15rem; line-height: 1.5; color: var(--muted); max-width: 62ch; }
+  .tab-body { margin-top: 1.5rem; max-width: 75ch; }
+  .tab-body p { margin: 0 0 1rem; }
+  .tab-panel .pub-group { margin-top: 2rem; }
+  .tab-panel .pub-list { margin-bottom: 0; }
+  .back-btn { margin-top: 2.5rem; }
+  .scope-btn { margin-top: .5rem; }
+
+  /* Publications (same pattern as index.html) */
+  .pub-group { font-family: var(--display); font-weight: 700; font-size: 1.15rem; letter-spacing: 0; margin: 0 0 1rem; color: var(--teal-ink); }
+  .pub-authors, .pub-title, .pub-venue { display: block; }
+  .pub-authors { color: var(--muted); font-size: .95rem; }
+  .pub-authors .me { color: var(--ink); font-weight: 700; }
+  .pub-title { margin: .2rem 0; font-weight: 600; }
+  .pub-venue { font-size: .95rem; color: var(--muted); }
+  .pub-venue .text-link { margin-left: .5rem; color: var(--ink); }
+  .pub-list { list-style: none; margin: 0 0 3rem; padding: 0; border-top: 1px solid var(--line); }
+  .pub-list li { display: grid; grid-template-columns: 5rem 1fr; gap: 1rem; padding: 1.15rem 0; border-bottom: 1px solid var(--line); }
+  .pub-year { font-family: var(--display); font-weight: 700; color: var(--magenta); }
+  .text-link { font-weight: 600; text-decoration-color: var(--magenta); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  .text-link:hover { color: var(--magenta); }
+  .btn {
+    display: inline-block; text-decoration: none;
+    font-family: var(--display); font-weight: 600; font-size: .95rem;
+    padding: .9rem 1.4rem; border-radius: 4px;
+    border: 1.5px solid transparent;
+    transition: background-color .15s, border-color .15s, color .15s;
+  }
+  .btn-outline { border-color: var(--magenta); color: var(--magenta); }
+  .btn-outline:hover { background: var(--magenta); color: #fff; }
+
+  /* Contact / footer */
+  .contact { background: var(--plum); color: #fff; border-top: 0 !important; position: relative; overflow: hidden; padding-bottom: 2.5rem; }
+  .contact::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(
+      ellipse 60% 85% at 100% 100%,
+      rgba(14,154,145,.55) 0%,
+      rgba(14,154,145,.28) 30%,
+      rgba(14,154,145,.10) 55%,
+      rgba(14,154,145,0) 75%
+    );
+  }
+  .contact .wrap { position: relative; z-index: 1; }
+  .contact h2 { color: #fff; }
+  .contact .eyebrow { color: var(--amber); }
+  .contact-mail {
+    display: inline-block; font-family: var(--display); font-weight: 700;
+    font-size: clamp(1.3rem, 3.8vw, 2.5rem); letter-spacing: -.015em;
+    text-decoration-color: var(--amber); text-decoration-thickness: 3px; text-underline-offset: 8px;
+    overflow-wrap: anywhere;
+  }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 1.75rem; margin-top: 2.5rem; }
+  .contact-links a { color: rgba(255,255,255,.8); font-weight: 500; }
+  .contact-links a:hover { color: #7fd8d0; }
+  .copyright { margin: clamp(3rem, 8vw, 6rem) 0 0; color: rgba(255,255,255,.55); font-size: .875rem; }
+
+  /* ---------- Small screens ---------- */
+  @media (max-width: 860px) {
+    .overview-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .menu-btn { display: block; }
+    .brand { font-size: 1rem; }
+    .nav {
+      position: absolute; top: var(--nav-h); left: 0; right: 0;
+      flex-direction: column; gap: 0; padding: .5rem 1.5rem 1.25rem;
+      background: var(--plum); display: none;
+    }
+    .nav.is-open { display: flex; }
+    .nav a { padding: .85rem 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .nav a[aria-current="true"] { border-bottom-color: rgba(255,255,255,.1); color: var(--amber); }
+    .pub-list li { grid-template-columns: 1fr; gap: .15rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body id="top">
+
+<!-- ============ TOP BAR: links go back to the sections of the main page ============ -->
+<header class="topbar" id="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">R. Bernadett Vlocskó, PhD</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="nav" id="nav" aria-label="Sections">
+      <a href="index.html#about">About</a>
+      <a href="index.html#projects" aria-current="true">Projects</a>
+      <a href="index.html#publications">Publications</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ PROJECT HEADER ============ -->
+  <section class="project-hero">
+    <div class="wrap">
+      <a class="back-link" href="index.html#projects">← All projects</a>
+      <p class="project-kicker">UMass Boston, PhD project</p>
+      <h1>Small molecule antioxidant development</h1>
+      <p class="project-meta">Collaboration: Marianna Török &amp; Zsuzsanna Zsengellér</p>
+    </div>
+  </section>
+
+  <!-- ============ FIGURE ============ -->
+  <section class="section">
+    <div class="wrap">
+      <figure class="figure">
+        <img src="images/redox_balance.png" width="1600" height="900" alt="A balance scale weighing prooxidants against antioxidants. Prooxidants: reactive oxygen and nitrogen species (H2O2, HO•, RO•, ROO•, O2•−, ONOO−) and external triggers (smoking, pollution, UV exposure, diet). Antioxidants: endogenous (glutathione; enzymatic activity of SOD, CAT, GPx) and exogenous (vitamin C, vitamin E, redox medicine). Therapeutic goal: restore redox balance by enhancing antioxidant activity.">
+        <figcaption>Oxidative stress arises from an imbalance between prooxidants and antioxidant defenses. The therapeutic goal is to restore redox balance by enhancing antioxidant activity.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ OVERVIEW ============ -->
+  <section class="section" id="overview">
+    <div class="wrap">
+      <p class="eyebrow">The project</p>
+      <h2>Overview</h2>
+      <div class="overview-grid">
+        <div class="overview-text">
+          <!-- This text was drafted from the titles of your papers. Edit it freely and add your own results. -->
+          <p>Oxidative stress arises when reactive oxygen and nitrogen species outweigh the body's antioxidant defenses. My PhD project at UMass Boston focused on developing small molecule antioxidants that help restore this balance.</p>
+          <p>The work centered on diaryl hydrazones, including organofluorine analogues, alongside phenol and thiophenol analogues. It combined experimental antioxidant activity measurements with density functional theory (DFT) calculations to relate structural features and physicochemical properties to antioxidant activity.</p>
+          <p>One application is preeclampsia, where these compounds were studied for alleviating mitochondrial oxidative stress, in collaboration with Marianna Török and Zsuzsanna Zsengellér.</p>
+          <!-- Add more paragraphs here: approach, key results, what you would do next. -->
+        </div>
+        <dl class="facts">
+          <dt>Where</dt>
+          <dd>UMass Boston</dd>
+          <dt>Project type</dt>
+          <dd>PhD project</dd>
+          <dt>Collaboration</dt>
+          <dd>Marianna Török<br>Zsuzsanna Zsengellér</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRAMEWORKS (tabs) ============ -->
+  <section class="section" id="frameworks">
+    <div class="wrap">
+      <h2>Antioxidant frameworks</h2>
+
+      <div class="tabs" role="tablist" aria-label="Antioxidant frameworks">
+        <button class="tab" role="tab" id="tab-phenols" aria-controls="panel-phenols" aria-selected="true">Thiophenols vs phenols</button>
+        <button class="tab" role="tab" id="tab-hydrazones" aria-controls="panel-hydrazones" aria-selected="false" tabindex="-1">Diaryl hydrazones</button>
+        <button class="tab" role="tab" id="tab-charged" aria-controls="panel-charged" aria-selected="false" tabindex="-1">Diaryl hydrazone salts</button>
+      </div>
+
+      <div class="tab-panel" role="tabpanel" id="panel-phenols" aria-labelledby="tab-phenols" tabindex="0">
+        <h3>Thiophenols vs phenols</h3>
+        <p class="tab-sub">Identify structural drivers of antioxidant activity</p>
+        <div class="tab-body">
+          <p>Phenols and polyphenols are well-known and widely investigated antioxidants, however their thiol counterparts, thiophenols, remain somehow understudied, despite the essential role of the thiol-based glutathione in cellular antioxidant defense. To address this gap, the antioxidant capacity of structurally versatile thiophenols is evaluated, incorporating both electron-donating and electron-withdrawing substituents as well as structurally more complex heteroaryl groups, and compared them with their phenol analogues. 17 phenol-thiophenol pairs were examined to identify structural factors governing antioxidant activity. Several physicochemical descriptors were calculated for all 34 compounds by DFT approaches and correlated with experimental data to determine the most predictive parameters. The antioxidant activity of the selected derivatives was assessed using standard DPPH and ABTS radical-scavenging assays.</p>
+        </div>
+        <a class="btn btn-outline scope-btn" href="images/phenol_thiophenol_scope.png" target="_blank" rel="noopener">Scope</a>
+        <h4 class="pub-group">Peer-reviewed publications</h4>
+        <ul class="pub-list">
+        <li>
+          <span class="pub-year">2025</span>
+          <span class="pub-body">
+            <span class="pub-authors"><span class="me">Vlocskó, R. B.</span>, Mastyugin, M., Török, B., &amp; Török, M.</span>
+            <span class="pub-title">Correlation of physicochemical properties with antioxidant activity in phenol and thiophenol analogues.</span>
+            <span class="pub-venue"><em>Scientific Reports</em>, 2025, <em>15</em>, 73. <a class="text-link" href="https://doi.org/10.1038/s41598-024-83982-4" target="_blank" rel="noopener">DOI</a></span>
+          </span>
+        </li>
+        </ul>
+        <h4 class="pub-group">Conference presence</h4>
+        <ul class="pub-list">
+        <li>
+          <span class="pub-year">2024</span>
+          <span class="pub-body">
+            <span class="pub-authors"><span class="me">Vlocskó, R. B.</span>, Mastyugin, M., Török, B., Török, M.</span>
+            <span class="pub-title">Assessing Antioxidant Activity Through Theory and Experiments: A Comparative DFT Study of Phenol and Thiophenol Analogues.</span>
+            <span class="pub-venue"><em>ACS Spring Meeting</em>, 2024 (poster).</span>
+          </span>
+        </li>
+        </ul>
+      </div>
+
+      <div class="tab-panel" role="tabpanel" id="panel-hydrazones" aria-labelledby="tab-hydrazones" tabindex="0">
+        <h3>Diaryl hydrazones</h3>
+        <p class="tab-sub">Alleviation of Mitochondrial Oxidative Stress in Preeclampsia</p>
+        <!-- Add your text for this framework here, e.g.:
+        <div class="tab-body"><p>...</p></div> -->
+        <h4 class="pub-group">Peer-reviewed publications</h4>
+        <ul class="pub-list">
+        <li>
+          <span class="pub-year">2025</span>
+          <span class="pub-body">
+            <span class="pub-authors"><span class="me">Vlocskó, R. B.</span>, Mastyugin, M., Zsengellér, K. Zs., Török, M., Török, B.</span>
+            <span class="pub-title">Development of Diaryl Hydrazones for Alleviation of Mitochondrial Oxidative Stress in Preeclampsia.</span>
+            <span class="pub-venue"><em>Journal of Medicinal Chemistry</em>, 2025, <em>68</em>, 10075–10091. <a class="text-link" href="https://doi.org/10.1021/acs.jmedchem.5c00010" target="_blank" rel="noopener">DOI</a></span>
+          </span>
+        </li>
+        <li>
+          <span class="pub-year">2026</span>
+          <span class="pub-body">
+            <span class="pub-authors">Zsengellér, K. Zs., Mastyugin, M., Fusco, R. A., <span class="me">Vlocskó, R. B.</span>, Ferguson, C., Pintye, D., Nasim, H., Salahuddin, S., Young, C. B., Török, B., Török, M.</span>
+            <span class="pub-title">Impact of Structural Features on the Antioxidant Activity of Organofluorine Diaryl Hydrazones.</span>
+            <span class="pub-venue"><em>Molecules</em>, 2026, <em>31</em>, 78. <a class="text-link" href="https://doi.org/10.3390/molecules31010078" target="_blank" rel="noopener">DOI</a></span>
+          </span>
+        </li>
+        <li>
+          <span class="pub-year">2025</span>
+          <span class="pub-body">
+            <span class="pub-authors">Zsengellér, Z. K., Mastyugin, M., Fusco, A. R., <span class="me">Vlocskó, R. B.</span>, Costa, M., Ferguson, C., Pintye, D., Sziva, R. E., Salahuddin, S., Young, C. B., Török, M., &amp; Török, B.</span>
+            <span class="pub-title">Mitigating oxidative stress and Anti-angiogenic state in an in vitro model of preeclampsia by Hy-12, an organofluorine hydrazone antioxidant.</span>
+            <span class="pub-venue"><em>Current Issues in Molecular Biology</em>, 2025, <em>47</em>, 680. <a class="text-link" href="https://doi.org/10.3390/cimb47090680" target="_blank" rel="noopener">DOI</a></span>
+          </span>
+        </li>
+        </ul>
+      </div>
+
+      <div class="tab-panel" role="tabpanel" id="panel-charged" aria-labelledby="tab-charged" tabindex="0">
+        <h3>Diaryl hydrazone salts</h3>
+        <p class="tab-sub">From neutral to charged: effects of quaternization on radical-scavenging capacity in diarylhydrazones</p>
+        <!-- Add your text for this framework here, e.g.:
+        <div class="tab-body"><p>...</p></div> -->
+        <h4 class="pub-group">Conference presence</h4>
+        <ul class="pub-list">
+        <li>
+          <span class="pub-year">2025</span>
+          <span class="pub-body">
+            <span class="pub-authors"><span class="me">Vlocskó, R. B.</span>, Mastyugin, M., Gustin, L., Zsengellér, Zs., Török, M., Török, B.</span>
+            <span class="pub-title">Exploring Antioxidant Effects of Organofluorine Diphenyl Hydrazone Quaternary Salts in Preeclampsia Therapy: a DFT Approach.</span>
+            <span class="pub-venue"><em>ACS Spring Meeting</em>, 2025 (oral).</span>
+          </span>
+        </li>
+        </ul>
+      </div>
+
+      <a class="btn btn-outline back-btn" href="index.html#projects">← Back to all projects</a>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Get in touch</p>
+      <h2>Contact</h2>
+      <a class="contact-mail" href="https://www.linkedin.com/in/bernadett-vlocsko/" target="_blank" rel="noopener">Message me on LinkedIn</a>
+      <div class="contact-links">
+        <a href="https://github.com/bernadett-vlocsko" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/bernadett-vlocsko/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://orcid.org/0009-0004-6373-2257" target="_blank" rel="noopener">ORCID</a>
+        <a href="https://scholar.google.com/citations?user=BNU6e-cAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="Bernadett_Vlocsko_2026.pdf">CV</a>
+      </div>
+      <p class="copyright">© <span id="year"></span> R. Bernadett Vlocskó</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  menuBtn.addEventListener('click', () => {
+    const open = nav.classList.toggle('is-open');
+    menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.textContent = open ? 'Close' : 'Menu';
+  });
+
+  // Framework tabs: show one panel at a time; arrow keys move between tabs
+  const tablist = document.querySelector('.tabs');
+  const tabs = [...tablist.querySelectorAll('[role="tab"]')];
+  const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
+  tablist.parentElement.classList.add('js-tabs');
+  const selectTab = (i, focus) => {
+    tabs.forEach((tab, n) => {
+      const on = n === i;
+      tab.setAttribute('aria-selected', on);
+      tab.tabIndex = on ? 0 : -1;
+      panels[n].hidden = !on;
+    });
+    if (focus) tabs[i].focus();
+  };
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => selectTab(i, false));
+    tab.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') selectTab((i + 1) % tabs.length, true);
+      else if (e.key === 'ArrowLeft') selectTab((i - 1 + tabs.length) % tabs.length, true);
+      else if (e.key === 'Home') selectTab(0, true);
+      else if (e.key === 'End') selectTab(tabs.length - 1, true);
+      else return;
+      e.preventDefault();
+    });
+  });
+  selectTab(0, false);
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

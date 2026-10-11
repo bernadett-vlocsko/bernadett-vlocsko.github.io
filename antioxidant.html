@@ -113,14 +113,14 @@
     background: var(--amber);
   }
 
-  /* Header layout: title on the left, redox balance figure on the right */
-  .hero-grid { display: grid; grid-template-columns: 1fr 2fr; gap: clamp(2rem, 4vw, 3.5rem); align-items: center; }
+  /* Header layout: title in one line above the redox balance figure */
+  .hero-block { max-width: 50rem; margin-inline: auto; }
   .hero-figure {
-    width: 100%; height: auto;
+    width: 100%; height: auto; margin-top: 1.75rem;
     border-radius: 6px; box-shadow: 0 18px 50px rgba(0,0,0,.4);
   }
-  @media (max-width: 900px) {
-    .hero-grid { grid-template-columns: 1fr; }
+  @media (min-width: 900px) {
+    .project-hero h1 { white-space: nowrap; max-width: none; }
   }
 
   /* Framework tabs */
@@ -225,12 +225,12 @@
 
   <!-- ============ PROJECT HEADER ============ -->
   <section class="project-hero">
-    <div class="wrap hero-grid">
-      <div class="hero-text">
+    <div class="wrap">
+      <div class="hero-block">
         <p class="project-kicker">UMass Boston, PhD project</p>
         <h1>Small molecule antioxidant development</h1>
+        <img class="hero-figure" src="images/redox_balance.png" width="1600" height="900" alt="A balance scale weighing prooxidants against antioxidants. Prooxidants: reactive oxygen and nitrogen species (H2O2, HO•, RO•, ROO•, O2•−, ONOO−) and external triggers (smoking, pollution, UV exposure, diet). Antioxidants: endogenous (glutathione; enzymatic activity of SOD, CAT, GPx) and exogenous (vitamin C, vitamin E, redox medicine). Therapeutic goal: restore redox balance by enhancing antioxidant activity.">
       </div>
-      <img class="hero-figure" src="images/redox_balance.png" width="1600" height="900" alt="A balance scale weighing prooxidants against antioxidants. Prooxidants: reactive oxygen and nitrogen species (H2O2, HO•, RO•, ROO•, O2•−, ONOO−) and external triggers (smoking, pollution, UV exposure, diet). Antioxidants: endogenous (glutathione; enzymatic activity of SOD, CAT, GPx) and exogenous (vitamin C, vitamin E, redox medicine). Therapeutic goal: restore redox balance by enhancing antioxidant activity.">
     </div>
   </section>
 

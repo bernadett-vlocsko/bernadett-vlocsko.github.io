@@ -116,6 +116,27 @@
   .flow-scroll { overflow-x: auto; border-radius: 6px; margin-top: clamp(2rem, 5vw, 3rem); }
   .flow-scroll .head-figure { margin: 0; min-width: 760px; }
 
+  .deck { margin-top: 3rem; }
+  .deck-title { font-family: var(--display); font-weight: 700; font-size: 1.15rem; color: var(--teal-ink); margin: 0 0 1rem; }
+  .deck-frame {
+    position: relative; aspect-ratio: 16 / 9; border-radius: 6px; overflow: hidden;
+    background: var(--plum);
+    box-shadow: 0 0 0 1px rgba(0,0,0,.06), 0 14px 32px rgba(42,13,43,.18);
+    -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+  }
+  .deck-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+  .deck-shield { position: absolute; inset: 0; }   /* sits over the image so it can't be dragged or right-clicked */
+  .deck-empty { position: absolute; inset: 0; margin: 0; display: none; place-items: center; color: rgba(255,255,255,.7); }
+  .deck-controls { display: flex; align-items: center; justify-content: center; gap: 1.25rem; margin-top: 1rem; }
+  .deck-btn {
+    width: 2.75rem; height: 2.75rem; border-radius: 50%; cursor: pointer;
+    border: 1.5px solid var(--magenta); background: transparent; color: var(--magenta);
+    font-size: 1.1rem; transition: background-color .15s, color .15s;
+  }
+  .deck-btn:hover:not(:disabled) { background: var(--magenta); color: #fff; }
+  .deck-btn:disabled { opacity: .35; cursor: default; }
+  .deck-count { font-family: var(--display); font-weight: 600; color: var(--muted); min-width: 4.5rem; text-align: center; }
+
   .back-dark {
     display: inline-block; margin-top: 3rem;
     font-weight: 600; text-decoration-color: var(--magenta);
@@ -164,6 +185,23 @@
         <p class="question">Could computational methods help us screen potential coformers more efficiently and accelerate the development process?</p>
       </div>
 
+      <!-- ============ PRESENTATION VIEWER ============
+           Slides: images/slides/Slide1.PNG, Slide2.PNG, ... (PowerPoint's export names).
+           The viewer finds however many there are; slide numbers must have no gaps. -->
+      <section class="deck" aria-label="Presentation">
+        <h3 class="deck-title">Presentation</h3>
+        <div class="deck-frame" id="deckFrame">
+          <img id="deckImg" alt="Presentation slide 1" draggable="false">
+          <div class="deck-shield" aria-hidden="true"></div>
+          <p class="deck-empty" id="deckEmpty">Slides coming soon.</p>
+        </div>
+        <div class="deck-controls">
+          <button class="deck-btn" id="deckPrev" aria-label="Previous slide">&larr;</button>
+          <span class="deck-count" id="deckCount" aria-live="polite"></span>
+          <button class="deck-btn" id="deckNext" aria-label="Next slide">&rarr;</button>
+        </div>
+      </section>
+
       <a class="back-dark" href="index.html#projects">&larr; Back to all projects</a>
     </div>
   </section>
@@ -176,6 +214,62 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ---------- Presentation viewer ----------
+  // Slides live in images/slides/ with PowerPoint's own export names:
+  // Slide1.PNG, Slide2.PNG, ...  The viewer counts them automatically.
+  const SLIDE_PATH = n => `images/slides/Slide${n}.PNG`;
+  const MAX_SLIDES = 80;
+
+  (() => {
+    const frame = document.getElementById('deckFrame');
+    const img = document.getElementById('deckImg');
+    const prev = document.getElementById('deckPrev');
+    const next = document.getElementById('deckNext');
+    const count = document.getElementById('deckCount');
+    const empty = document.getElementById('deckEmpty');
+    let i = 1, total = 0;
+
+    const exists = n => new Promise(res => {
+      const t = new Image();
+      t.onload = () => res(true); t.onerror = () => res(false);
+      t.src = SLIDE_PATH(n);
+    });
+
+    const show = n => {
+      i = Math.min(Math.max(n, 1), total);
+      img.src = SLIDE_PATH(i);
+      img.alt = `Presentation slide ${i} of ${total}`;
+      count.textContent = `${i} / ${total}`;
+      prev.disabled = i === 1; next.disabled = i === total;
+    };
+
+    prev.disabled = next.disabled = true;
+    img.style.display = 'none';
+
+    (async () => {
+      while (total < MAX_SLIDES && await exists(total + 1)) total++;
+      if (!total) { empty.style.display = 'grid'; return; }
+      img.style.display = '';
+      prev.addEventListener('click', () => show(i - 1));
+      next.addEventListener('click', () => show(i + 1));
+      document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') show(i - 1);
+        if (e.key === 'ArrowRight') show(i + 1);
+      });
+      let x0 = null;
+      frame.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+      frame.addEventListener('touchend', e => {
+        if (x0 === null) return;
+        const dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 40) show(i + (dx < 0 ? 1 : -1));
+        x0 = null;
+      });
+      show(1);
+    })();
+
+    frame.addEventListener('contextmenu', e => e.preventDefault());
+  })();
 </script>
 </body>
 </html>

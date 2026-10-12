@@ -121,6 +121,14 @@
   }
   .project-hero h1 { max-width: none; }
 
+  /* Overview (same as csp.html) */
+  .summary { max-width: 75ch; }
+  .summary p { margin: 0 0 1.1rem; }
+  .question {
+    margin: 2rem 0 0; padding: .25rem 0 .25rem 1.25rem;
+    border-left: 3px solid var(--amber);
+  }
+
   /* Framework tabs */
   .tabs { display: flex; flex-wrap: wrap; gap: .25rem 2rem; border-bottom: 1px solid var(--line); margin-bottom: 2rem; }
   .tab {
@@ -232,6 +240,19 @@
     </div>
   </section>
 
+  <!-- ============ OVERVIEW ============ -->
+  <section class="section" id="overview">
+    <div class="wrap">
+      <h2>Overview</h2>
+      <div class="summary">
+        <p>Physiological redox homeostasis is a fine balance between prooxidants and antioxidants, which are integrated elements of several reduction&ndash;oxidation mechanisms at the molecular, organellar, cellular and tissue levels. When this equilibrium is disrupted and prooxidants become dominant, the body relies on endogenous and exogenous antioxidants to counterbalance the dysregulation and ultimately prevent the progression of oxidative stress.</p>
+        <p>Reactive species, including reactive oxygen, nitrogen and sulfur species, are significant contributors to prooxidant activity. Over the years, substantial knowledge has accumulated about their origin and their roles in disease development, leading to the discovery and development of antioxidants that effectively target the production and detoxification of these oxidants.</p>
+        <p>This project explores the structural drivers of antioxidant activity in thiophenols, diaryl hydrazones and their quaternary ammonium salts. In addition, green and benign synthetic protocols were developed for the studied antioxidants.</p>
+        <p class="question">What structural features make a molecule an effective antioxidant?</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ FRAMEWORKS (tabs) ============ -->
   <section class="section" id="frameworks">
     <div class="wrap">
@@ -245,7 +266,7 @@
 
       <div class="tab-panel" role="tabpanel" id="panel-phenols" aria-labelledby="tab-phenols" tabindex="0">
         <h3>Thiophenols vs phenols</h3>
-        <p class="tab-sub">Identify structural drivers of antioxidant activity</p>
+        <p class="tab-sub">Structure&ndash;Activity Relationships of Phenol and Thiophenol Antioxidants (computational analysis)</p>
         <div class="tab-body">
           <p>Phenols and polyphenols are well-known and widely investigated antioxidants, however their thiol counterparts, thiophenols, remain somehow understudied, despite the essential role of the thiol-based glutathione in cellular antioxidant defense. To address this gap, the antioxidant capacity of structurally versatile thiophenols is evaluated, incorporating both electron-donating and electron-withdrawing substituents as well as structurally more complex heteroaryl groups, and compared them with their phenol analogues. 17 phenol-thiophenol pairs were examined to identify structural factors governing antioxidant activity. Several physicochemical descriptors were calculated for all 34 compounds by DFT approaches and correlated with experimental data to determine the most predictive parameters. The antioxidant activity of the selected derivatives was assessed using standard DPPH and ABTS radical-scavenging assays.</p>
         </div>
@@ -276,9 +297,13 @@
 
       <div class="tab-panel" role="tabpanel" id="panel-hydrazones" aria-labelledby="tab-hydrazones" tabindex="0">
         <h3>Diaryl hydrazones</h3>
-        <p class="tab-sub">Alleviation of Mitochondrial Oxidative Stress in Preeclampsia</p>
-        <!-- Add your text for this framework here, e.g.:
-        <div class="tab-body"><p>...</p></div> -->
+        <p class="tab-sub">Alleviation of Mitochondrial Oxidative Stress in Preeclampsia (computational analysis and synthesis)</p>
+        <div class="tab-body">
+          <p>Preeclampsia (PE) is a major pregnancy disorder driven by oxidative stress and endothelial dysfunction. Together with related hypertensive disorders, it is associated with about 20% of preterm births and 16% of maternal deaths. PE is a systemic disease: beyond hypertension, it can impair the mother&rsquo;s kidney and liver function and lead to fetal growth restriction or stillbirth. There is no cure; the only effective treatment is early delivery, which carries risks for both mother and baby.</p>
+          <p>Because placental oxidative stress may trigger PE, antioxidant therapies have been proposed. Vitamins C and E failed in clinical trials, likely because they could not reach the site of oxidative stress. This calls for new antioxidants with improved pharmacokinetic properties that can target mitochondrial oxidative stress.</p>
+          <p>Our group previously studied diaryl hydrazones as antioxidants for Alzheimer&rsquo;s disease therapy. Building on their promising radical-scavenging activity, we optimized this scaffold by introducing mitochondria-targeting features.</p>
+        </div>
+        <a class="btn btn-outline scope-btn" href="images/hydrazone_scope.png" target="_blank" rel="noopener">Scope</a>
         <h4 class="pub-group">Peer-reviewed publications</h4>
         <ul class="pub-list">
         <li>
@@ -310,7 +335,7 @@
 
       <div class="tab-panel" role="tabpanel" id="panel-charged" aria-labelledby="tab-charged" tabindex="0">
         <h3>Diaryl hydrazone salts</h3>
-        <p class="tab-sub">From neutral to charged: effects of quaternization on radical-scavenging capacity in diarylhydrazones</p>
+        <p class="tab-sub">From Neutral to Charged: Effects of Quaternization on Radical-Scavenging Capacity in Diarylhydrazones (computational analysis and synthesis)</p>
         <!-- Add your text for this framework here, e.g.:
         <div class="tab-body"><p>...</p></div> -->
         <h4 class="pub-group">Conference presence</h4>

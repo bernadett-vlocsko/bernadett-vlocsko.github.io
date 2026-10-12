@@ -113,13 +113,8 @@
     color: var(--teal-ink);
   }
 
-  .flow-section { border-top: 1px solid var(--line); padding-top: clamp(3rem, 6vw, 4.5rem); }
-  .flow-scroll { overflow-x: auto; border-radius: 6px; }
-  .flow-figure {
-    display: block; width: 100%; min-width: 760px; height: auto;
-    border-radius: 6px;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.06), 0 14px 32px rgba(42,13,43,.18);
-  }
+  .flow-scroll { overflow-x: auto; border-radius: 6px; margin-top: clamp(2rem, 5vw, 3rem); }
+  .flow-scroll .head-figure { margin: 0; min-width: 760px; }
 
   .back-dark {
     display: inline-block; margin-top: 3rem;
@@ -153,8 +148,9 @@
     <div class="wrap">
       <p class="eyebrow">Agios Pharmaceuticals, Cambridge</p>
       <h1>Cocrystal discovery</h1>
-      <img class="head-figure" src="images/csp_figure.png" width="1600" height="680" alt="Illustration: candidate coformers are ranked by a computational score, and the best one is combined with the API into a predicted cocrystal lattice held together by hydrogen bonds, with the unit cell outlined.">
-
+      <div class="flow-scroll">
+        <img class="head-figure" src="images/csp_flow_highres.png" width="4800" height="2520" alt="Project flow in four steps. 1, Literature review: counterion screening for cimetidine, omeprazole and loratadine, eliminating available salts and inorganics. 2, COSMO-RS (AMS, COSMOtherm): coformer analysis, geometry optimization and excess enthalpy calculation, giving a counterion ranking by pKa and GRAS status. 3, CCDC: polymorph search with simulated XRPD patterns and single crystal analysis, plus secondary screening by hydrogen-bond propensity and molecular complementarity. 4, Lab testing and characterization by XRPD, DSC, TGA and PLM, leading to cocrystal performance in formulation. Key questions: conformational preferences, crystal packing arrangements, and ranking the likelihood of the resulting crystal structure based on scoring or a fitness function.">
+      </div>
     </div>
   </section>
 
@@ -167,18 +163,11 @@
         <p>But how do we identify the best coformer? Traditionally, this requires extensive experimental screening, which is costly and time-consuming.</p>
         <p class="question">Could computational methods help us screen potential coformers more efficiently and accelerate the development process?</p>
       </div>
-    </div>
-  </section>
 
-  <section class="section flow-section">
-    <div class="wrap">
-      <h2>Project flow</h2>
-      <div class="flow-scroll">
-        <img class="flow-figure" src="images/csp_flow.png" width="1600" height="840" loading="lazy" alt="Project flow in four steps. 1, Literature review: counterion screening for cimetidine, omeprazole and loratadine, eliminating available salts and inorganics. 2, COSMO-RS (AMS, COSMOtherm): coformer analysis, geometry optimization and excess enthalpy calculation, giving a counterion ranking by pKa and GRAS status. 3, CCDC: polymorph search with simulated XRPD patterns and single crystal analysis, plus secondary screening by hydrogen-bond propensity and molecular complementarity. 4, Lab testing and characterization by XRPD, DSC, TGA and PLM, leading to cocrystal performance in formulation. Key questions: conformational preferences, crystal packing arrangements, and ranking the likelihood of the resulting crystal structure based on scoring or a fitness function.">
-      </div>
       <a class="back-dark" href="index.html#projects">&larr; Back to all projects</a>
     </div>
   </section>
+
 </main>
 
 <footer class="footer">

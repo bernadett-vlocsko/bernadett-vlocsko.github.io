@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cocrystal discovery — R. Bernadett Vlocskó, PhD</title>
+<meta name="description" content="Cocrystal discovery at Agios Pharmaceuticals: using computational methods to screen coformers and improve the properties of active pharmaceutical ingredients.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum: #2a0d2b;
+    --magenta: #8a1f7c;
+    --amber: #f6a81c;
+    --teal: #0e9a91;
+    --teal-ink: #064f4b;
+    --teal-tint: #cfe6e3;
+    --paper: #f9f7f8;
+    --ink: #221522;
+    --muted: #6b5d6b;
+    --line: #e4dce3;
+    --display: "Poppins", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --wrap: 1120px;
+    --nav-h: 72px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-padding-top: var(--nav-h); }
+  body {
+    margin: 0;
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 2px; }
+  .wrap { width: min(100% - 3rem, var(--wrap)); margin-inline: auto; }
+  .narrow { max-width: 46rem; }
+
+  /* ---------- Top bar (always solid on this page) ---------- */
+  .topbar {
+    position: fixed; inset: 0 0 auto 0; z-index: 20;
+    height: var(--nav-h);
+    color: #fff; background: var(--plum);
+    box-shadow: 0 1px 0 rgba(255,255,255,.08);
+  }
+  .topbar .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+  .brand { font-family: var(--display); font-weight: 700; font-size: 1.125rem; text-decoration: none; }
+  .nav { display: flex; gap: 1.75rem; }
+  .nav a {
+    text-decoration: none; font-size: .975rem; font-weight: 500;
+    color: rgba(255,255,255,.78); padding: .4rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color .15s, border-color .15s;
+  }
+  .nav a:hover { color: #fff; }
+  .nav a[aria-current="page"] { color: #fff; border-bottom-color: var(--amber); }
+
+  /* ---------- Page header ---------- */
+  .page-head {
+    color: #fff;
+    padding: calc(var(--nav-h) + clamp(3rem, 8vw, 5.5rem)) 0 clamp(3rem, 7vw, 4.5rem);
+    background: radial-gradient(110% 120% at 85% 10%, var(--teal) 0%, var(--magenta) 45%, var(--plum) 100%);
+  }
+  .back {
+    display: inline-block; margin-bottom: 1.75rem;
+    font-weight: 600; font-size: .95rem; text-decoration: none;
+    color: rgba(255,255,255,.8);
+  }
+  .back:hover { color: #fff; }
+  .eyebrow {
+    margin: 0 0 .75rem; font-family: var(--display); font-size: .8rem; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--amber);
+  }
+  .page-head h1 {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1; letter-spacing: -.02em;
+    margin: 0; max-width: 18em; text-wrap: balance;
+  }
+  .head-figure {
+    display: block; width: 100%; height: auto;
+    margin: clamp(2rem, 5vw, 3rem) 0 0;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 18px 40px rgba(0,0,0,.35);
+  }
+
+  /* ---------- Content ---------- */
+  .section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+  .section h2 {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.15; letter-spacing: -.01em;
+    margin: 0 0 2rem; color: var(--teal-ink);
+  }
+  .section h2::after {
+    content: ""; display: block;
+    width: 3.25rem; height: 3px; margin-top: 1rem;
+    background: var(--amber);
+  }
+  .summary p { margin: 0 0 1.3rem; }
+  .summary p:first-child { font-size: 1.2rem; line-height: 1.55; }
+  .question {
+    margin: 2.25rem 0 0; padding: .25rem 0 .25rem 1.25rem;
+    border-left: 3px solid var(--amber);
+    font-family: var(--display); font-weight: 600;
+    font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.45;
+    color: var(--teal-ink);
+  }
+
+  .flow-section { border-top: 1px solid var(--line); padding-top: clamp(3rem, 6vw, 4.5rem); }
+  .flow-scroll { overflow-x: auto; border-radius: 6px; }
+  .flow-figure {
+    display: block; width: 100%; min-width: 760px; height: auto;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.06), 0 14px 32px rgba(42,13,43,.18);
+  }
+
+  .back-dark {
+    display: inline-block; margin-top: 3rem;
+    font-weight: 600; text-decoration-color: var(--magenta);
+    text-decoration-thickness: 2px; text-underline-offset: 4px;
+  }
+  .back-dark:hover { color: var(--magenta); }
+
+  /* ---------- Footer ---------- */
+  .footer { background: var(--plum); color: rgba(255,255,255,.6); padding: 2.5rem 0; font-size: .875rem; }
+
+  @media (max-width: 640px) {
+    .brand { font-size: 1rem; }
+    .nav a { font-size: .9rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">R. Bernadett Vlocskó, PhD</a>
+    <nav class="nav" aria-label="Back">
+      <a href="index.html#projects">&larr; Back to projects</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <p class="eyebrow">Agios Pharmaceuticals, Cambridge</p>
+      <h1>Cocrystal discovery</h1>
+      <img class="head-figure" src="images/csp_figure.png" width="1600" height="680" alt="Illustration: candidate coformers are ranked by a computational score, and the best one is combined with the API into a predicted cocrystal lattice held together by hydrogen bonds, with the unit cell outlined.">
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow">
+      <h2>Overview</h2>
+      <div class="summary">
+        <p>Many active pharmaceutical ingredients (APIs) are solid materials that can exist in different crystal structures, a phenomenon known as polymorphism. Since these forms can have different physicochemical properties, such as stability and solubility, identifying the most suitable form is essential for pharmaceutical development.</p>
+        <p>But what happens when none of the available forms has adequate properties? One approach is to combine the API with a suitable coformer through ionic or non-covalent interactions, such as hydrogen bonding, to improve its properties without compromising its biological activity.</p>
+        <p>But how do we identify the best coformer? Traditionally, this requires extensive experimental screening, which is costly and time-consuming.</p>
+        <p class="question">Could computational methods help us screen potential coformers more efficiently and accelerate the development process?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section flow-section">
+    <div class="wrap">
+      <h2>Project flow</h2>
+      <div class="flow-scroll">
+        <img class="flow-figure" src="images/csp_flow.png" width="1600" height="840" loading="lazy" alt="Project flow in four steps. 1, Literature review: counterion screening for cimetidine, omeprazole and loratadine, eliminating available salts and inorganics. 2, COSMO-RS (AMS, COSMOtherm): coformer analysis, geometry optimization and excess enthalpy calculation, giving a counterion ranking by pKa and GRAS status. 3, CCDC: polymorph search with simulated XRPD patterns and single crystal analysis, plus secondary screening by hydrogen-bond propensity and molecular complementarity. 4, Lab testing and characterization by XRPD, DSC, TGA and PLM, leading to cocrystal performance in formulation. Key questions: conformational preferences, crystal packing arrangements, and ranking the likelihood of the resulting crystal structure based on scoring or a fitness function.">
+      </div>
+      <a class="back-dark" href="index.html#projects">&larr; Back to all projects</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">© <span id="year"></span> R. Bernadett Vlocskó</div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
